@@ -3,7 +3,7 @@ $dotnetCLIChannel = 'Current'
 $dotnetCLIRequiredVersion = 'latest'
 $NoSudo = $false
 
-. ./tools.ps1
+. "$PSScriptRoot/tools.ps1"
 
 $DotnetArguments = @{ Channel = $dotnetCLIChannel; Version = $dotnetCLIRequiredVersion; NoSudo = $NoSudo }
 Install-Dotnet @DotnetArguments
