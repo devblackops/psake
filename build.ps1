@@ -6,7 +6,7 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -Verbose:$false
 
 'Pester' | Foreach-Object {
     if (-not (Get-Module -Name $_ -ErrorAction SilentlyContinue)) {
-        Install-Module -Name $_ -AllowClobber -Scope CurrentUser
+        Install-Module -Name $_ -AllowClobber -Scope CurrentUser -Force
         Import-Module -Name $_
     }
 }
