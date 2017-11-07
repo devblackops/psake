@@ -24,6 +24,14 @@ Install-Dotnet @dotnetArguments
 $Env:PATH += "$([IO.Path]::PathSeparator)$Env:HOME/.dotnet"
 dotnet build -version -nologo
 
-$testResults = Invoke-Pester -Path $PSScriptRoot/tests
+$testResults = Invoke-Pester -Path ./tests -OutputFile ./testResults.xml
 
-exit $testResults.FailedCount
+# Upload test artifacts to AppVeyor
+if ($env:APPVEYOR_JOB_ID) {
+    $wc = New-Object 'System.Net.WebClient'
+    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path ./testResults.xml))
+}
+
+if ($testResults.FailedCount -gt 0) {
+    throw "$FailedCount tests failed!"
+}
