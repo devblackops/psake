@@ -14,7 +14,6 @@ $Env:PATH += "$([IO.Path]::PathSeparator)$Env:HOME/.dotnet"
 # Execute once to configure
 dotnet build -version -nologo
 
-
-
 # Execute Build Tester
-.\psake-buildTester.ps1
+. ../build.ps1
+#.\psake-buildTester.ps1

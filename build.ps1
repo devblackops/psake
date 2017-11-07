@@ -4,14 +4,12 @@ param()
 Get-PackageProvider -Name Nuget -ForceBootstrap -Verbose:$false | Out-Null
 Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -Verbose:$false
 
-'BuildHelpers', 'Pester' | Foreach-Object {
+'Pester' | Foreach-Object {
     if (-not (Get-Module -Name $_ -ErrorAction SilentlyContinue)) {
         Install-Module -Name $_ -AllowClobber
         Import-Module -Name $_
     }
 }
-
-Set-BuildEnvironment -Force
 
 $testResults = Invoke-Pester -Path ./tests -PassThru -OutputFile ./testResults.xml
 
