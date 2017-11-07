@@ -1,5 +1,5 @@
 # Setup dotnet
-. "$PSScriptRoot/build/tools.ps1"
+. "$PSScriptRoot/tools.ps1"
 $dotnetArguments = @{
     Channel = 'Current'
     Version = 'latest'
