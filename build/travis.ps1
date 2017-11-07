@@ -15,5 +15,5 @@ $Env:PATH += "$([IO.Path]::PathSeparator)$Env:HOME/.dotnet"
 dotnet build -version -nologo
 
 # Execute Build Tester
-. ../build.ps1
+. "$PSScriptRoot/../build.ps1"
 #.\psake-buildTester.ps1
