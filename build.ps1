@@ -18,7 +18,7 @@ $testResults = Invoke-Pester -Path ./tests -PassThru -OutputFile ./testResults.x
 # Upload test artifacts to AppVeyor
 if ($env:APPVEYOR_JOB_ID) {
     $wc = New-Object 'System.Net.WebClient'
-    $wc.UploadFile("https://ci.appveyor.com/api/testresults/xunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path ./testResults.xml))
+    $wc.UploadFile("https://ci.appveyor.com/api/testresults/nunit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path ./testResults.xml))
 }
 
 if ($testResults.FailedCount -gt 0) {
