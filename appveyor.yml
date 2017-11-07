@@ -5,4 +5,4 @@ skip_commits:
 build: off
 
 test_script:
-  - ps: ./build/travis.ps1
+  - ps: ./build.ps1
