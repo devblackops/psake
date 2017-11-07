@@ -11,6 +11,10 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -Verbose:$false
     }
 }
 
+if ($env:TRAVIS) {
+    . "$PSScriptRoot/build/travis.ps1"
+}
+
 $testResults = Invoke-Pester -Path ./tests -PassThru -OutputFile ./testResults.xml
 
 # Upload test artifacts to AppVeyor
