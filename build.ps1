@@ -22,5 +22,5 @@ if ($env:APPVEYOR_JOB_ID) {
 }
 
 if ($testResults.FailedCount -gt 0) {
-    throw "$FailedCount tests failed!"
+    throw "$($testResults.FailedCount) tests failed!"
 }
