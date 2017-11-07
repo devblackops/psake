@@ -1,6 +1,6 @@
 
-$dotnetCLIChannel = "Current"
-$dotnetCLIRequiredVersion = "latest"
+$dotnetCLIChannel = 'Current'
+$dotnetCLIRequiredVersion = 'latest'
 $NoSudo = $false
 
 . build/tools.ps1
