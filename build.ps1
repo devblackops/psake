@@ -13,17 +13,6 @@ Set-PSRepository -Name PSGallery -InstallationPolicy Trusted -Verbose:$false
 
 Set-BuildEnvironment -Force
 
-# Setup dotnet
-. "$PSScriptRoot/build/tools.ps1"
-$dotnetArguments = @{
-    Channel = 'Current'
-    Version = 'latest'
-    NoSudo = $false
-}
-Install-Dotnet @dotnetArguments
-$Env:PATH += "$([IO.Path]::PathSeparator)$Env:HOME/.dotnet"
-dotnet build -version -nologo
-
 $testResults = Invoke-Pester -Path ./tests -PassThru -OutputFile ./testResults.xml
 
 # Upload test artifacts to AppVeyor
