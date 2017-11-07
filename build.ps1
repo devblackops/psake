@@ -24,7 +24,7 @@ Install-Dotnet @dotnetArguments
 $Env:PATH += "$([IO.Path]::PathSeparator)$Env:HOME/.dotnet"
 dotnet build -version -nologo
 
-$testResults = Invoke-Pester -Path ./tests -OutputFile ./testResults.xml
+$testResults = Invoke-Pester -Path ./tests -PassThru -OutputFile ./testResults.xml
 
 # Upload test artifacts to AppVeyor
 if ($env:APPVEYOR_JOB_ID) {
